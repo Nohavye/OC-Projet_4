@@ -326,6 +326,7 @@ input[data-error]::after {
   background: #fe142f;
   display: block;
   margin: 0 auto;
+  margin-top: 20px;
   border-radius: 7px;
   font-size: 1rem;
   padding: 12px 82px;
