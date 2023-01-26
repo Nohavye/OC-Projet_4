@@ -1,9 +1,8 @@
 import { RegistrationModal } from "./registrationForm.js";
 
-function editNav() {
+document.querySelector(".icon").onclick = () => {
 
   var x = document.getElementById("myTopnav");
-
   if (x.className === "topnav") {
 
     x.className += " responsive";
