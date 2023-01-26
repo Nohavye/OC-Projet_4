@@ -11,6 +11,7 @@ export const dElements = {
 export let map_formElements = new Map([
   
     ["firstName", { 
+        
         element: document.querySelector(".text-first"),
         type: 'text', 
         regularExpression: /^[a-zA-z]{2}/, 
@@ -20,6 +21,7 @@ export let map_formElements = new Map([
     }],
   
     ["lastName", { 
+        
         element: document.querySelector(".text-last"),
         type: 'text', 
         regularExpression: /^[a-zA-z]{2}/, 
@@ -29,6 +31,7 @@ export let map_formElements = new Map([
     }],
   
     ["eMail", { 
+
         element: document.querySelector(".text-email"),
         type: 'text', 
         regularExpression: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 
@@ -38,6 +41,7 @@ export let map_formElements = new Map([
     }],
 
     ["birthdate", { 
+
         element: document.querySelector(".text-birthdate"),
         type: 'text', 
         regularExpression: /.{1}/, 
@@ -47,6 +51,7 @@ export let map_formElements = new Map([
     }],
 
     ["quantity", { 
+
         element: document.querySelector(".text-quantity"),
         type: 'text', 
         regularExpression: /^[0-9]/, 
@@ -56,6 +61,7 @@ export let map_formElements = new Map([
     }],
 
     ["checkBoxsLocation", { 
+
         element: document.querySelectorAll(".checkbox-input-location"),
         type: 'checkboxlist', 
         message: "checkBoxsLocation",
@@ -64,6 +70,7 @@ export let map_formElements = new Map([
     }],
 
     ["checkBoxTerms", { 
+
         element: document.querySelector(".checkbox-input-terms"),
         type: 'checkbox', 
         message: "checkBoxTerms",
@@ -72,12 +79,14 @@ export let map_formElements = new Map([
     }],
 
     ["checkBoxNewsLetters", { 
+
         element: document.querySelector(".checkbox-input-newsletters"),
         required: false, 
         validated: false 
     }],
 
     ["submitButton", { 
+
         element: document.querySelector(".btn-submit"),
         required: false, 
         validated: false 
@@ -85,6 +94,7 @@ export let map_formElements = new Map([
   ]);
 
   export const messages = {
+
     firstName: "Veuillez entrer 2 caractères minimum pour votre prénom.",
     lastName: "Veuillez entrer 2 caractères minimum pour votre nom.",
     eMail: "Veuillez entrer un email valide.",

@@ -18,6 +18,7 @@ export class RegistrationModal {
     dElements.closeModalButton.addEventListener("click", this.#visibleModal.bind(this, false));
     
     dElements.registrationForm.onsubmit = (e) => {
+      
       e.preventDefault();
       dElements.registrationForm.style.display = "none";
       
@@ -181,7 +182,15 @@ export class RegistrationModal {
   #testInput_checkBox(elementData) {
 
     elementData.validated = elementData.element.checked;
-    if(elementData.validated == false) { this.#messageElement_CheckBox.show(); } else { this.#messageElement_CheckBox.hide(); }
+
+    if(elementData.validated == false) { 
+      
+      this.#messageElement_CheckBox.show(); 
+    } else { 
+      
+      this.#messageElement_CheckBox.hide(); 
+    }
+
     this.#checkFormValidity();
   }
 
