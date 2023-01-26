@@ -5,6 +5,7 @@ export const dElements = {
     modalContent: document.querySelector(".content"),
     openModalButtons: document.querySelectorAll(".modal-btn"),
     closeModalButton: document.querySelector(".close"),
+    registrationForm: document.querySelector(".registrationForm")
 }
   
 export let map_formElements = new Map([

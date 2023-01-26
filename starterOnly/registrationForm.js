@@ -16,6 +16,23 @@ export class RegistrationModal {
     // Modal Events
     dElements.openModalButtons.forEach((btn) => btn.addEventListener("click", this.#visibleModal.bind(this, true)));
     dElements.closeModalButton.addEventListener("click", this.#visibleModal.bind(this, false));
+    
+    dElements.registrationForm.onsubmit = (e) => {
+      e.preventDefault();
+      dElements.registrationForm.style.display = "none";
+      
+      const regSuccessfulMsg = document.createElement("p");
+      regSuccessfulMsg.textContent = `Félicitation ${first.value} ! Votre inscription à bien été prise en compte. 
+      Vous recevrez rapidement un mail de confirmation à l'adresse ${email.value}.`
+
+      regSuccessfulMsg.style.paddingTop = "225px";
+      regSuccessfulMsg.style.paddingBottom = "325px";
+      regSuccessfulMsg.style.paddingLeft = "50px";
+      regSuccessfulMsg.style.paddingRight = "50px";
+      regSuccessfulMsg.style.textAlign = "center";
+
+      dElements.modalContent.appendChild(regSuccessfulMsg);
+    }
 
     // Form Events
     for(let value of map_formElements.values()) {
@@ -185,10 +202,12 @@ export class RegistrationModal {
 
     if(formIsValid) {
 
-      submitButton.style.display = "block";
+      submitButton.style.opacity = "1";
+      submitButton.disabled = false;
     } else {
 
-      submitButton.style.display = "none";
+      submitButton.style.opacity = "0.25";
+      submitButton.disabled = true;
     }
   }
 }
