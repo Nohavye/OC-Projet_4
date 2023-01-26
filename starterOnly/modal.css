@@ -531,3 +531,10 @@ footer {
   }
 }
 
+.text-first {
+  text-transform: capitalize;
+}
+
+.text-last {
+  text-transform: capitalize;
+}

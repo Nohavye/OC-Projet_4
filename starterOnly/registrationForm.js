@@ -18,7 +18,7 @@ export class RegistrationModal {
     dElements.closeModalButton.addEventListener("click", this.#visibleModal.bind(this, false));
     
     dElements.registrationForm.onsubmit = (e) => {
-      
+
       e.preventDefault();
       dElements.registrationForm.style.display = "none";
       
@@ -43,68 +43,29 @@ export class RegistrationModal {
         case 'text':
           this.#testInput_text(value);
           value.element.addEventListener("input", this.#testInput_text.bind(this, value));
-          value.element.addEventListener("mouseenter", this.#testMessage_text.bind(this, value, true));
-          value.element.addEventListener("mouseleave", this.#testMessage_text.bind(this, value, false));
+          value.element.addEventListener("focus", this.#testMessage_text.bind(this, value, true));
+          value.element.addEventListener("blur", this.#testMessage_text.bind(this, value, false));
           break;
 
         case 'checkboxlist':
           this.#testInput_checkBoxsList(value);
           value.element.forEach((checkbox) => checkbox.addEventListener("input", this.#testInput_checkBoxsList.bind(this, value)));
-          value.element[0].parentElement.addEventListener("mouseenter", this.#testMessage_checkBoxsList.bind(this, true));
-          value.element[0].parentElement.addEventListener("mouseleave", this.#testMessage_checkBoxsList.bind(this, false));
 
           this.#messageElement_CheckBoxsList.setContent(messages.checkBoxsLocation);
           this.#messageElement_CheckBoxsList.setplace(value.element[0].parentElement);
-          this.#messageElement_CheckBoxsList.hide();
+
 
           break;
 
         case 'checkbox':
           this.#testInput_checkBox(value);
           value.element.addEventListener("input", this.#testInput_checkBox.bind(this, value));
-          value.element.parentElement.addEventListener("mouseenter", this.#testMessage_checkBox.bind(this, true));
-          value.element.parentElement.addEventListener("mouseleave", this.#testMessage_checkBox.bind(this, false));
 
           this.#messageElement_CheckBox.setContent(messages.checkBoxTerms);
           this.#messageElement_CheckBox.setplace(value.element.parentElement);
-          this.#messageElement_CheckBox.hide();
 
           break; 
       }
-    }
-  }
-
-  #testMessage_checkBox(mouseIsHover) {
-
-    if(mouseIsHover) {
-
-      if(map_formElements.get("checkBoxTerms").validated == false) {
-
-        this.#messageElement_CheckBox.show();
-      } else {
-
-        this.#messageElement_CheckBox.hide();
-      }
-    } else {
-
-      this.#messageElement_CheckBox.hide();
-    }
-  }
-
-  #testMessage_checkBoxsList(mouseIsHover) {
-
-    if(mouseIsHover) {
-
-      if(map_formElements.get("checkBoxsLocation").validated == false) {
-
-        this.#messageElement_CheckBoxsList.show();
-      } else {
-
-        this.#messageElement_CheckBoxsList.hide();
-      }
-    } else {
-
-      this.#messageElement_CheckBoxsList.hide();
     }
   }
 
