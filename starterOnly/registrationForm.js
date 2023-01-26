@@ -23,8 +23,10 @@ export class RegistrationModal {
       dElements.registrationForm.style.display = "none";
       
       const regSuccessfulMsg = document.createElement("p");
-      regSuccessfulMsg.textContent = `Félicitation ${first.value} ! Votre inscription à bien été prise en compte. 
-      Vous recevrez rapidement un mail de confirmation à l'adresse ${email.value}.`
+
+      regSuccessfulMsg.textContent = `Félicitation ${first.value.charAt(0).toUpperCase() + first.value.slice(1)} 
+                                      ! Votre inscription à bien été prise en compte. 
+                                      Vous recevrez rapidement un mail de confirmation à l'adresse ${email.value}.`
 
       regSuccessfulMsg.style.paddingTop = "225px";
       regSuccessfulMsg.style.paddingBottom = "325px";
