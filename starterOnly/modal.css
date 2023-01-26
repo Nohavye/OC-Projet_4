@@ -498,13 +498,11 @@ footer {
     display: none;
   }
   .hero-headline {
-    border: 1px solid red;
     width: 100%;
-    font-size: 8vw;
+    font-size: clamp(40px, 8vw, 100px);
     white-space: normal;
   }
   .hero-text {
-    border: 1px solid red;
     width: 100%;
     font-size: 1.5rem;
   }
