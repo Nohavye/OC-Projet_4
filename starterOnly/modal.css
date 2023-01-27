@@ -166,6 +166,8 @@ main {
   width: 100%;
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .content {

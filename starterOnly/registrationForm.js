@@ -7,6 +7,20 @@ export class RegistrationModal {
   #messageElement_CheckBoxsList = new movableTag("p");
   #messageElement_CheckBox = new movableTag("p");
 
+  answers = {
+
+    firstName: "",
+    lastName: "",
+    eMail: "",
+    birthdate: "",
+    quantity: "",
+    location: "",
+    terms: true,
+    newsLetters: false
+  }
+
+  
+
   constructor() {
 
     // Modal Style
@@ -16,25 +30,16 @@ export class RegistrationModal {
     // Modal Events
     dElements.openModalButtons.forEach((btn) => btn.addEventListener("click", this.#visibleModal.bind(this, true)));
     dElements.closeModalButton.addEventListener("click", this.#visibleModal.bind(this, false));
+    map_formElements.get("submitButton").element.addEventListener("mouseenter", this.#submitButton_click.bind(this));
     
     dElements.registrationForm.onsubmit = (e) => {
 
       e.preventDefault();
-      dElements.registrationForm.style.display = "none";
-      
-      const regSuccessfulMsg = document.createElement("p");
 
-      regSuccessfulMsg.textContent = `Félicitation ${first.value.charAt(0).toUpperCase() + first.value.slice(1)} 
-                                      ! Votre inscription à bien été prise en compte. 
-                                      Vous recevrez rapidement un mail de confirmation à l'adresse ${email.value}.`
+      this.#setAnswers();
+      this.#showSuccesfulMessage();
 
-      regSuccessfulMsg.style.paddingTop = "225px";
-      regSuccessfulMsg.style.paddingBottom = "325px";
-      regSuccessfulMsg.style.paddingLeft = "50px";
-      regSuccessfulMsg.style.paddingRight = "50px";
-      regSuccessfulMsg.style.textAlign = "center";
-
-      dElements.modalContent.appendChild(regSuccessfulMsg);
+      dElements.registrationForm.dispatchEvent(new Event('afterSubmission'));
     }
 
     // Form Events
@@ -69,6 +74,55 @@ export class RegistrationModal {
           break; 
       }
     }
+  }
+
+  #submitButton_click() {
+    let value = this.#checkFormValidity();
+    if(typeof(value) != 'undefined') {
+      if(value.type = "text") { value.element.focus(); }
+    }
+  }
+  
+  #setAnswers() {
+
+    const getLocationReply = () => {
+
+      for(let checkbox of map_formElements.get("checkBoxsLocation").element) {
+        if(checkbox.checked) {
+          return checkbox.value;
+        }
+      }
+    }
+
+    this.answers.firstName = first.value.charAt(0).toUpperCase() + first.value.slice(1);
+    this.answers.lastName = last.value.charAt(0).toUpperCase() + last.value.slice(1);
+    this.answers.eMail = email.value;
+    this.answers.birthdate = birthdate.value;
+    this.answers.quantity = quantity.value;
+
+    this.answers.location = getLocationReply();
+
+    this.answers.terms = checkbox1.checked;
+    this.answers.newsLetters = checkbox2.checked;
+  }
+
+  #showSuccesfulMessage() {
+
+    dElements.registrationForm.style.display = "none";
+      
+    const successfulMsg = document.createElement("p");
+
+    successfulMsg.textContent = `Félicitation ${this.answers.firstName} 
+                                ! Votre inscription au tournoi de ${this.answers.location} à bien été prise en compte. 
+                                Vous recevrez rapidement un mail de confirmation à l'adresse : ${this.answers.eMail}.`;
+
+    successfulMsg.style.paddingTop = "225px";
+    successfulMsg.style.paddingBottom = "325px";
+    successfulMsg.style.paddingLeft = "50px";
+    successfulMsg.style.paddingRight = "50px";
+    successfulMsg.style.textAlign = "center";
+
+    dElements.modalContent.appendChild(successfulMsg);
   }
 
   #testMessage_text(elementData, isFocused) {
@@ -160,11 +214,13 @@ export class RegistrationModal {
   #checkFormValidity() {
 
     let formIsValid = true;
+    let unvalidValue;
 
     for(let value of map_formElements.values()) {
       if(value.required) {
         if(!value.validated) {
           formIsValid = false;
+          unvalidValue = value;
           break;
         }
       }
@@ -180,6 +236,7 @@ export class RegistrationModal {
 
       submitButton.style.opacity = "0.25";
       submitButton.disabled = true;
+      return unvalidValue;
     }
   }
 }

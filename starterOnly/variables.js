@@ -95,8 +95,8 @@ export let map_formElements = new Map([
 
   export const messages = {
 
-    firstName: "Veuillez entrer 2 caractères minimum pour votre prénom.",
-    lastName: "Veuillez entrer 2 caractères minimum pour votre nom.",
+    firstName: "Veuillez entrer 2 caractères minimum.",
+    lastName: "Veuillez entrer 2 caractères minimum.",
     eMail: "Veuillez entrer un email valide.",
     birthdate: "Veuillez saisir votre date de naissance.",
     quantity: "Veuillez entrer un chiffre.",
