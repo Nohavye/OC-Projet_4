@@ -5,7 +5,7 @@ export const dElements = {
     modalContent: document.querySelector(".content"),
     openModalButtons: document.querySelectorAll(".modal-btn"),
     closeModalButton: document.querySelector(".close"),
-    registrationForm: document.querySelector(".registrationForm")
+    form: document.querySelector(".registrationForm")
 }
   
 export let map_formElements = new Map([
@@ -111,10 +111,10 @@ export let map_formElements = new Map([
         this.tagName = tagName;
 
         this.element = document.createElement(this.tagName);
-        this.#setStyle();
+        this.#initStyle();
     }
 
-    #setStyle() {
+    #initStyle() {
 
         this.element.style.display = "block";
         this.element.style.padding = "2px";
