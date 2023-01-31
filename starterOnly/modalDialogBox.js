@@ -6,7 +6,7 @@ export class ModalDialogBox {
   
     Cette classe est entièrement dédiée à la gestion de la fenêtre modale qui présente le formulaire d'inscription.
     Elle gère son affichage, la validation des entrées du formulaire, les effets visuels liés à la validation,
-    les messages d'ereurs informant de la validité des entrées et la gestion des données en sortie une fois le
+    les messages d'erreurs informant de la validité des entrées et la gestion des données en sortie une fois le
     formulaire envoyé. */
 
   // Création d'un objet "answers" pour stocker les réponses définitives du formulaire.
