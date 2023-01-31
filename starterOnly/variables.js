@@ -1,6 +1,8 @@
 export const dElements = {
 
-    // Modal Elements
+    /*  Objet littéral simple contenant les elements du DOM relatifs à la
+        fenêtre modal.*/
+
     modalBackground: document.querySelector(".bground"),
     modalContent: document.querySelector(".content"),
     openModalButtons: document.querySelectorAll(".modal-btn"),
@@ -10,6 +12,23 @@ export const dElements = {
   
 export let map_formElements = new Map([
   
+    /*  Création d'un objet Map() contenant les données permettant de tester
+        la validité de chaque entrées du formulaire d'inscription. Cette map
+        est une série de clés / objets structurée de la façon suivante:
+        
+        "clé" (string désignant un entrée spécifique du formulaire), {
+
+            element: element du DOM représentant l'entrée visée,
+            type: le type d'entrée (string), servant à diriger les données vers la fonction de teste appropriée,
+            regularExpression: Expression régulière permetant de tester la validité de l'entrée,
+            required: indique si l'entée est requise pour valider le formulaire,
+            validated: indique si l'entrée est valide.
+        }
+
+        Initialement, chaque propriétés "validated" prend la valeur "false"
+        à l'exeption de la coche relative au termes et conditions puisque celle-ci
+        est pré-cochée.*/
+
     ["firstName", { 
         
         element: document.querySelector(".text-first"),
@@ -95,6 +114,9 @@ export let map_formElements = new Map([
 
   export const messages = {
 
+    /*  Objet littéral simple contenant les message d'erreur liés à la
+        validation du formulaire.*/
+
     firstName: "Veuillez entrer 2 caractères minimum.",
     lastName: "Veuillez entrer 2 caractères minimum.",
     eMail: "Veuillez entrer un email valide.",
@@ -104,9 +126,18 @@ export let map_formElements = new Map([
     checkBoxTerms: "Veullez accepter les termes et conditions."
   }
 
-  export class movableTag {
+  export class MovableTag {
+
+    /*  Classe: MovableTag
+        
+        Cette classe permet la création d'une nouvelle balise dans le html cible.
+        Grâce au méthodes de cette classe, cette balise peut être déplacée, cachée
+        ou supprimer, on peut aussi en modifier le contenu.*/
 
     constructor(tagName) {
+
+        /*  Le constructeur prend un nom de balise html en argument, créé l'élément
+            dans le document et définit son style.*/
 
         this.tagName = tagName;
 
@@ -114,6 +145,7 @@ export let map_formElements = new Map([
         this.#initStyle();
     }
 
+    //  Initialisation du style de la balise
     #initStyle() {
 
         this.element.style.display = "block";
@@ -124,26 +156,34 @@ export let map_formElements = new Map([
         this.element.style.textAlign = "right";
     }
 
+    /*  Methode permentant de définir ou de modifier la position de la balise dans la
+        structure html par rapport à un élément qui le le précède. Notre balise sera
+        donc placée après "elementBefore".*/
+
     setplace(elementBefore) {
 
         elementBefore.parentNode.insertBefore(this.element, elementBefore.nextSibling);
     }
 
+    //  Définir ou modifier le contenu de la balise.
     setContent(content) {
 
         this.element.innerText = content;
     }
 
+    //  Afficher la balise.
     show() {
 
         this.element.style.display = "block";
     }
 
+    // Cacher la balise.
     hide() {
 
         this.element.style.display = "none";
     }
 
+    //  Supprimer la balise.
     remove() {
 
         this.element.remove();

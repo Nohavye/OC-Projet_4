@@ -1,4 +1,4 @@
-import { dElements, map_formElements, messages, movableTag } from "./variables.js";
+import { dElements, map_formElements, messages, MovableTag } from "./variables.js";
 
 /*Classe: RegistrationModal
   
@@ -60,9 +60,9 @@ export class RegistrationModal {
 
     message: {
 
-      text: new movableTag("p"),
-      checkBoxsList: new movableTag("p"),
-      checkBox: new movableTag("p")
+      text: new MovableTag("p"),
+      checkBoxsList: new MovableTag("p"),
+      checkBox: new MovableTag("p")
     },
 
     initEvents: () => {
@@ -128,8 +128,8 @@ export class RegistrationModal {
       const successMsg = document.createElement("p");
 
       successMsg.textContent = `Félicitation ${this.answers.firstName} 
-                                  ! Votre inscription au tournoi de ${this.answers.location} à bien été prise en compte. 
-                                  Vous recevrez rapidement un mail de confirmation à l'adresse : ${this.answers.eMail}.`;
+                                ! Votre inscription au tournoi de ${this.answers.location} à bien été prise en compte. 
+                                Vous recevrez rapidement un mail de confirmation à l'adresse : ${this.answers.eMail}.`;
 
       successMsg.style.paddingTop = "225px";
       successMsg.style.paddingBottom = "325px";
