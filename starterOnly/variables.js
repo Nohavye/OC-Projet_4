@@ -33,7 +33,7 @@ export let map_formElements = new Map([
         
         element: document.querySelector(".text-first"),
         type: 'text', 
-        regularExpression: /^[a-z ,.'-]{2,}$/,
+        regularExpression: /^[A-za-z ,.'-]{2,}$/,
         message: "firstName",
         required: true, 
         validated: false 
@@ -43,7 +43,7 @@ export let map_formElements = new Map([
         
         element: document.querySelector(".text-last"),
         type: 'text', 
-        regularExpression: /^[a-z ,.'-]{2,}$/, 
+        regularExpression: /^[A-za-z ,.'-]{2,}$/, 
         message: "lastName",
         required: true, 
         validated: false 
