@@ -25,9 +25,7 @@ export let map_formElements = new Map([
             validated: indique si l'entrée est valide.
         }
 
-        Initialement, chaque propriétés "validated" prend la valeur "false"
-        à l'exeption de la coche relative au termes et conditions puisque celle-ci
-        est pré-cochée.*/
+        Initialement, chaque propriétés "validated" prend la valeur "false" */
 
     ["firstName", { 
         
